@@ -1,10 +1,10 @@
 // Assignment code here
-//arrays of possible characters
+//strings of possible characters
 var possible_chars = {
-  lowercase: ['abcdefghijklmnopqrstuvwxyz'],
-  uppercase: ['ABCDEFGHIJKLMNOPQRSTUVWXYZ'],
-  numbers: ['1234567890'],
-  special: ['!@#$%^&*()<>?{}/~_-.[]']
+  lowercase: ["abcdefghijklmnopqrstuvwxyz"],
+  uppercase: ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"],
+  numbers: ["1234567890"],
+  special: ["!@#$%^&*()<>?{}/~_-.[];:"]
 }
 // chosen characters and password are to be determined
 var chosen_chars = "";
@@ -36,7 +36,8 @@ var chosen_chars = chosen_chars.concat(possible_chars.special);
 console.log("possible characters chosen are", chosen_chars);
 console.log("amount of possible characters is", chosen_chars.length);
 
-/* Was really stuck on how to generate a random loop, found this magic recipe online
+/* Was really stuck on how to generate a random loop, so I could get a random combo of characters from
+"chosen_chars" that was the length of "total_chars", found this magic recipe online
 and added a couple of my own "ingredients", source:
 https://www.slingacademy.com/article/create-javascript-array-of-random-elements-with-given-length/
 */
@@ -50,6 +51,20 @@ https://www.slingacademy.com/article/create-javascript-array-of-random-elements-
   var password = generatePassword(total_chars);
   console.log("your password is", password);
 
+  /*alternatively, I  later figured out I could have also used a regular function instead 
+of the arrow function above:
+  
+  function generatePassword() {
+    for (var i = 0; i < total_chars; i++) {
+      password += chosen_chars.charAt(Math.floor(Math.random() * chosen_chars.length));
+    }
+    return password;
+  }
+  I kept my original code as is since it all works nicely, but for the purpose of this project
+  just wanted to comment in the code block that was closer to what we had learned in class. We did
+  not cover Math methods so either way I had to reference an online source.
+*/
+  
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -62,6 +77,7 @@ function writePassword() {
   passwordText.value = password;
 
 }
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
