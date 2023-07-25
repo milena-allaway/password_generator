@@ -5,7 +5,7 @@ var possible_chars = {
   uppercase: ['ABCDEFGHIJKLMNOPQRSTUVWXYZ'],
   numbers: ['1234567890'],
   special: ['!@#$%^&*()<>?{}/~_-.[]']
-};
+}
 // chosen characters and password are to be determined
 var chosen_chars = "";
 var password = "";
@@ -40,14 +40,15 @@ console.log("amount of possible characters is", chosen_chars.length);
 and added a couple of my own "ingredients", source:
 https://www.slingacademy.com/article/create-javascript-array-of-random-elements-with-given-length/
 */
-var generateRandomString = (total_chars) => {
-  for (var i = 0; i < total_chars; i++) {
-    password += chosen_chars.charAt(Math.floor(Math.random() * chosen_chars.length));
-  } 
-  return password;
-}
-var password = generateRandomString(total_chars);
-console.log("your password is", password);
+
+  var generatePassword = (total_chars) => {
+    for (var i = 0; i < total_chars; i++) {
+      password += chosen_chars.charAt(Math.floor(Math.random() * chosen_chars.length));
+    } 
+    return password;
+  }
+  var password = generatePassword(total_chars);
+  console.log("your password is", password);
 
 
 // Get references to the #generate element
