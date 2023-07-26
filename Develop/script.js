@@ -40,6 +40,7 @@ function generatePassword() {
   if (confirm("Do you want to include uppercase letters?") == true) {
     var chosen_chars = chosen_chars.concat(possible_chars.uppercase);
   };
+  
   if (confirm("Do you want to include numbers?") == true) {
     var chosen_chars = chosen_chars.concat(possible_chars.numbers);
   };
