@@ -15,38 +15,35 @@ function generatePassword() {
   /*learned about prompt alerts from following source:
   https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt
   
-  prompts for user input to set length of password between 8 - 128 characters
+  prompts for user input to set length of password (total_chars) between 8 - 128 characters
   */
   var total_chars = Number(window.prompt("Choose password length between 8 - 128 characters"));
+
+  if (isNaN(total_chars) || total_chars < 8 || total_chars > 128) {
+    total_chars = Number(window.prompt("Incorrect value, please enter a number between 8 - 128"));
+  };
   
-    if (total_chars < 8) {
-     total_chars = Number(window.prompt("Incorrect value, please enter a number between 8 - 128"));
-    }
-    else if (total_chars > 128) {
-     total_chars = Number(window.prompt("Incorrect value, please enter a number between 8 - 128"));
-    };
-    
   console.log("total number of characters chosen is", + total_chars);
 
   /*learned about confirm alert from following source:
   https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm
   
-  alerts user to select what characters they want to include 
+  alerts user to select what characters (chosen_chars) they want to include 
   */
   if (confirm("Do you want to include lowercase letters?") == true) {
-    var chosen_chars = chosen_chars.concat(possible_chars.lowercase);
+    chosen_chars = chosen_chars.concat(possible_chars.lowercase);
   };
 
   if (confirm("Do you want to include uppercase letters?") == true) {
-    var chosen_chars = chosen_chars.concat(possible_chars.uppercase);
+    chosen_chars = chosen_chars.concat(possible_chars.uppercase);
   };
-  
+
   if (confirm("Do you want to include numbers?") == true) {
-    var chosen_chars = chosen_chars.concat(possible_chars.numbers);
+    chosen_chars = chosen_chars.concat(possible_chars.numbers);
   };
 
   if (confirm("Do you want to use special characters?") == true) {
-    var chosen_chars = chosen_chars.concat(possible_chars.special);
+    chosen_chars = chosen_chars.concat(possible_chars.special);
   };
 
   console.log("possible characters chosen are", chosen_chars);
@@ -62,8 +59,9 @@ function generatePassword() {
     password += chosen_chars.charAt(Math.floor(Math.random() * chosen_chars.length));
   }
   return password;
-}; 
+};
 
+//Starter Code:
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
