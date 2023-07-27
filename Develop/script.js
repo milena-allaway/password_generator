@@ -46,6 +46,10 @@ function generatePassword() {
     chosen_chars = chosen_chars.concat(possible_chars.special);
   };
 
+  if (chosen_chars === "") {
+    alert("You must choose at least one character type, please try again.")
+  };
+
   console.log("possible characters chosen are", chosen_chars);
   console.log("amount of possible characters is", chosen_chars.length);
 
