@@ -19,7 +19,7 @@ function generatePassword() {
   */
   var total_chars = Number(window.prompt("Choose password length between 8 - 128 characters"));
 
-  if (isNaN(total_chars) || total_chars < 8 || total_chars > 128) {
+  while (isNaN(total_chars) || total_chars < 8 || total_chars > 128) {
     total_chars = Number(window.prompt("Incorrect value, please enter a number between 8 - 128"));
   };
   
